@@ -10,14 +10,14 @@ public class HourlyEmployee {
     HourlyEmployee(){
         this.empID = 0;
         this.empName = "N/A";
-        this. totalHoursWorked = 0;
+        this.totalHoursWorked = 0;
         this.ratePerHour = 0;
     }
 
     public HourlyEmployee(int empID, String empName) {
         setEmpID(empID);
         setEmpName(empName);
-        this. totalHoursWorked = 0;
+        this.totalHoursWorked = 0;
         this.ratePerHour = 0;
     }
 
@@ -79,6 +79,6 @@ public class HourlyEmployee {
 
     @Override
     public String toString() {
-        return String.format("Name: %s\n ID: %d\n Hours Worked: %f\n Rate: %d'\n Total Salary: %d\n", empName, empID, totalHoursWorked, ratePerHour, computeSalary());
+        return String.format("Name: %s\n ID: %d\n Hours Worked: %f\n Rate: %f'\n Total Salary: %f\n", empName, empID, totalHoursWorked, ratePerHour, computeSalary());
     }
 }
