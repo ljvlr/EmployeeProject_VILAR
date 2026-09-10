@@ -46,22 +46,23 @@ public class CommissionEmployee {
     }
 
     public void setTotalSale(double totalSale) {
-        this.totalSale = totalSale;
+        this.totalSale = totalSale < 0 ? 0 : totalSale;
     }
 
+
     public double computeSalary(){
-        if(totalSale > 50000){
+        if(totalSale < 50000){
             return totalSale * 0.05;
-        }else if(totalSale >= 50000 && totalSale < 100000){
+        }else if(totalSale < 100000){
             return totalSale * 0.10;
-        }else if(totalSale >=100000 && totalSale < 500000){
+        }else if(totalSale < 500000){
             return totalSale * 0.15;
         }else{
             return totalSale * 0.20;
         }
     }
 
-    public void displayPieceWorkerEmployee(){
+    public void displayCommissionEmployee() {
         System.out.println("name: " + empName);
         System.out.println("ID: " + empID);
         System.out.println("Total Sale: " + totalSale);
@@ -69,7 +70,7 @@ public class CommissionEmployee {
 
     @Override
     public String toString() {
-        return String.format("Name: %s\n ID: %d\n Total Sle: %f\n Total Salary: %f\n", empName, empID, totalSale, computeSalary());
+        return String.format("CommissionEmployee [ID: %d, Name: %s, Total Sle: %.2f, Total Salary: %.2f]", empID, empName, totalSale, computeSalary());
     }
 
 

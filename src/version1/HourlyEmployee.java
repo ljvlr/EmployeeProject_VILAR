@@ -49,7 +49,7 @@ public class HourlyEmployee {
     }
 
     public void setTotalHoursWorked(float totalHoursWorked) {
-        this.totalHoursWorked = totalHoursWorked;
+        this.totalHoursWorked = totalHoursWorked < 0 ? 0 : totalHoursWorked;
     }
 
     public double getRatePerHour() {
@@ -57,7 +57,7 @@ public class HourlyEmployee {
     }
 
     public void setRatePerHour(double ratePerHour) {
-        this.ratePerHour = ratePerHour;
+        this.ratePerHour = ratePerHour < 0 ? 0 : ratePerHour;
     }
 
     public double computeSalary(){
@@ -70,7 +70,7 @@ public class HourlyEmployee {
         }
     }
 
-    public void displayHourlyEmployee(){
+    public void displayHourlyEmployee() {
         System.out.println("name: " + empName);
         System.out.println("ID: " + empID);
         System.out.println("Hours Worked: " + totalHoursWorked);
@@ -79,6 +79,6 @@ public class HourlyEmployee {
 
     @Override
     public String toString() {
-        return String.format("Name: %s\n ID: %d\n Hours Worked: %f\n Rate: %f'\n Total Salary: %f\n", empName, empID, totalHoursWorked, ratePerHour, computeSalary());
+        return String.format("HourlyEmployee [ID: %d, Name: %s, Hours: %.2f, Rate: %.2f, Total Salary: %.2f]", empID, empName, totalHoursWorked, ratePerHour, computeSalary());
     }
 }

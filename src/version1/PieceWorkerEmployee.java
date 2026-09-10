@@ -48,16 +48,14 @@ public class PieceWorkerEmployee {
     }
 
     public void setTotalPiecesFinished(int totalPiecesFinished) {
-        this.totalPiecesFinished = totalPiecesFinished;
+        this.totalPiecesFinished = totalPiecesFinished < 0 ? 0 : totalPiecesFinished;
     }
 
     public double getRatePerPiece() {
         return ratePerPiece;
     }
 
-    public void setRatePerPiece(double ratePerPiece) {
-        this.ratePerPiece = ratePerPiece;
-    }
+    public void setRatePerPiece(double ratePerPiece) { this.ratePerPiece = ratePerPiece < 0 ? 0 : ratePerPiece; }
 
     public double computeSalary(){
         double basePay = totalPiecesFinished * ratePerPiece;
@@ -65,7 +63,7 @@ public class PieceWorkerEmployee {
         return basePay + bonusPay;
     }
 
-    public void displayPieceWorkerEmployee(){
+    public void displayPieceWorkerEmployee() {
         System.out.println("name: " + empName);
         System.out.println("ID: " + empID);
         System.out.println("Pieces Worked: " + totalPiecesFinished);
@@ -74,7 +72,7 @@ public class PieceWorkerEmployee {
 
     @Override
     public String toString() {
-        return String.format("Name: %s\n ID: %d\n Pieces Worked: %d\n Rate: %f'\n Total Salary: %f\n", empName, empID, totalPiecesFinished, ratePerPiece, computeSalary());
+        return String.format("PieceWorkerEmployee [ID: %d, Name: %s, Pieces: %d, Rate: %.2f, Total Salary: %.2f]", empID, empName, totalPiecesFinished, ratePerPiece, computeSalary());
     }
 
 }
