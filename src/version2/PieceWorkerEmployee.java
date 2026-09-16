@@ -10,7 +10,7 @@ public class PieceWorkerEmployee {
 
     PieceWorkerEmployee(){
         this.empID = 0;
-        this.empName = "N/A";
+        this.empName = new Name();
         this.totalPiecesFinished = 0;
         this.ratePerPiece = 0;
         this.birthDate = new MyDate();
@@ -51,7 +51,7 @@ public class PieceWorkerEmployee {
         this.dateHired = dateHired;
     }
 
-    public String getEmpName() {
+    public Name getEmpName() {
         return empName;
     }
 

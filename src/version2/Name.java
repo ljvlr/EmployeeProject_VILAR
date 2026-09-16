@@ -7,7 +7,7 @@ public class Name {
     private String middleName;
     private String suffix;
 
-    Name(){
+    public Name() {
         this.firstName = "N/A";
         this.middleName = "N/A";
         this.lastName = "N/A";
@@ -17,21 +17,21 @@ public class Name {
     public Name(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.middleName = "N/A";
+        this.middleName = "";
         this.suffix = "";
     }
 
-    public Name(String firstName, String lastName, String middleName) {
+    public Name(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
-        this.lastName = lastName;
         this.middleName = middleName;
+        this.lastName = lastName;
         this.suffix = "";
     }
 
-    public Name(String firstName, String lastName, String middleName, String suffix) {
+    public Name(String firstName, String middleName, String lastName, String suffix) {
         this.firstName = firstName;
-        this.lastName = lastName;
         this.middleName = middleName;
+        this.lastName = lastName;
         this.suffix = suffix;
     }
 
@@ -67,19 +67,28 @@ public class Name {
         this.suffix = suffix;
     }
 
-    public void displayName(){
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(lastName, );
-        sb.append(firstName );
-        sb.append(middleName.charAt(0));
-
-        sb.toString();
+    public void displayName() {
+        if (middleName.isEmpty() && suffix.isEmpty()) {
+            System.out.println(String.format("%s, %s", lastName, firstName));
+        } else if (middleName.isEmpty()) {
+            System.out.println(String.format("%s, %s %s", lastName, firstName, suffix));
+        } else if (suffix.isEmpty()) {
+            System.out.println(String.format("%s, %s %c.", lastName, firstName, middleName.charAt(0)));
+        } else {
+            System.out.println(String.format("%s, %s %c. %s", lastName, firstName, middleName.charAt(0), suffix));
+        }
     }
 
     @Override
     public String toString() {
-        return String.format("%s, %s %c. %s.", lastName, firstName, middleName.charAt(0), suffix);
+        if (middleName.isEmpty() && suffix.isEmpty()) {
+            return String.format("%s, %s", lastName, firstName);
+        } else if (middleName.isEmpty()) {
+            return String.format("%s, %s %s", lastName, firstName, suffix);
+        } else if (suffix.isEmpty()) {
+            return String.format("%s, %s %c.", lastName, firstName, middleName.charAt(0));
+        } else {
+            return String.format("%s, %s %c. %s", lastName, firstName, middleName.charAt(0), suffix);
+        }
     }
-
 }

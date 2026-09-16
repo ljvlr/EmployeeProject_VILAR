@@ -3,33 +3,54 @@ package version2;
 public class CommissionEmployee {
 
     private int empID;
-    private String empName;
+    private Name empName;
     private double totalSale;
-
+    private MyDate birthDate;
+    private MyDate dateHired;
 
     CommissionEmployee(){
         this.empID = 0;
-        this.empName = "N/A";
+        this.empName = new Name();
         this.totalSale = 0;
     }
 
-    public CommissionEmployee(int empID, String empName) {
+    public CommissionEmployee(int empID, Name empName, MyDate birthDate, MyDate dateHired) {
         setEmpID(empID);
         setEmpName(empName);
+        setBirthDate(birthDate);
+        setDateHired(dateHired);
         this.totalSale = 0;
     }
 
-    public CommissionEmployee(int empID, String empName, double totalSale) {
+    public CommissionEmployee(int empID, Name empName, double totalSale, MyDate birthDate, MyDate dateHired) {
         setEmpID(empID);
         setEmpName(empName);
+        setBirthDate(birthDate);
+        setDateHired(dateHired);
         setTotalSale(totalSale);
     }
 
-    public String getEmpName() {
+    public MyDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(MyDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public MyDate getDateHired() {
+        return dateHired;
+    }
+
+    public void setDateHired(MyDate dateHired) {
+        this.dateHired = dateHired;
+    }
+
+    public Name getEmpName() {
         return empName;
     }
 
-    public void setEmpName(String empName) {
+    public void setEmpName(Name empName) {
         this.empName = empName;
     }
 
@@ -62,15 +83,22 @@ public class CommissionEmployee {
         }
     }
 
+    public double computeSalary(int currentMonth){
+        double salary = computeSalary();
+        return (birthDate.getMonth() == currentMonth) ? salary + 5000 : salary;
+    }
+
     public void displayCommissionEmployee() {
-        System.out.println("name: " + empName);
         System.out.println("ID: " + empID);
-        System.out.println("Total Sale: " + totalSale);
+        System.out.println("Name: " + empName);
+        System.out.println("DOB: " + birthDate);
+        System.out.println("Hired: " + dateHired);
+        System.out.println("Total Sale: " + String.format("%.2f", totalSale));
     }
 
     @Override
     public String toString() {
-        return String.format("CommissionEmployee [ID: %d, Name: %s, Total Sle: %.2f, Total Salary: %.2f]", empID, empName, totalSale, computeSalary());
+        return String.format("CommissionEmployee [ID: %d, Name: %s, DOB: %s, Hired: %s, Total Sale: %.2f, Total Salary: %.2f]", empID, empName, birthDate, dateHired, totalSale, computeSalary());
     }
 
 
